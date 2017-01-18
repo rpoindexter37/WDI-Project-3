@@ -8,6 +8,12 @@ const
       email: String,
       password: String
     },
+    facebook: {
+      id: String,
+      name: String,
+      token: String,
+      email: String
+    },
     playlists: [{type: mongoose.Schema.Types.ObjectId, ref: 'Playlist'}]
   })
 

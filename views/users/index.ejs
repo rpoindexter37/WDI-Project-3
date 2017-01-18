@@ -5,7 +5,7 @@
 <ul class="list-group">
   <% users.forEach((user) => { %>
     <li class="list-group-item">
-      <a href="/users/<%= user._id %>"><%= user.local.name %></a>
+      <a href="/users/<%= user._id %>"><%= user.local.name || user.facebook.name%></a>
     </li>
   <% }) %>
 </ul>
