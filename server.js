@@ -14,7 +14,8 @@ const
 	passport = require('passport'),
 	passportConfig = require('./config/passport.js'),
 	userRoutes = require('./routes/users.js'),
-	postRoutes = require('./routes/posts.js')
+	postRoutes = require('./routes/posts.js'),
+	methodOveride = require('method-override')
 
 	console.log(process.env.boom);
 
@@ -35,6 +36,7 @@ const store = new MongoDBStore({
 });
 
 // middleware
+app.use(methodOveride('_method'))
 app.use(express.static(__dirname + '/public'))
 app.use(logger('dev'))
 app.use(cookieParser())
@@ -50,6 +52,7 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
+
 
 // currentUser:
 app.use((req, res, next) => {

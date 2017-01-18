@@ -12,10 +12,15 @@ postRouter.route('/')
     })
   })
   .post((req, res) => {
-    Post.create(req.body, (err, post) => {
+    var newPost = new Post(req.body)
+    newPost._author = req.user
+    newPost.save((err, post) => {
+      req.user.posts.push(post)
+      req.user.save()
       res.redirect('/posts/' + post._id)
+      })
     })
-  })
+
 
 postRouter.get('/new', (req, res) => res.render('posts/new'))
 
@@ -25,6 +30,25 @@ postRouter.route('/:id')
       res.render('posts/show', {post: post})
     })
   })
+  .delete((req,res) => {
+  Post.findByIdAndRemove(req.params.id, (err,post) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log('bannana');
+    var postIndex = req.user.posts.findIndex((p) => p._id == req.params.id)
+    req.user.posts.splice(postIndex, 1)
+    req.user.save()
+    res.redirect('/profile')
+  })
+})
+
+  postRouter.post('/:id/comments', (req, res) => {
+    Post.findById(req.params.id, (err, post) => {
+      post.comments.push(req.body)
+      post.save(() => res.redirect('/posts/' + post._id))
+    })
+  })
 
 
 function isLoggedIn(req, res, next) {
@@ -32,5 +56,7 @@ function isLoggedIn(req, res, next) {
   req.flash('loginMessage', 'You must be logged in to see that.')
   res.redirect('/login')
 }
+
+
 
 module.exports = postRouter

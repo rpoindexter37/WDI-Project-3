@@ -2,7 +2,16 @@
     <div class="col-sm-6 col-sm-offset-3">
       <h2><%= user.local.name %></h2>
       <div class="well">
-          
+        <ul class="list-group">
+          <% user.posts.forEach((p) =>  { %>
+            <li class="list-group-item">
+              <h3>
+                <a href="/posts/<%= p._id %>"><%= p.title %></a>
+              </h3>
+              <button class"btn btn-danger" type="delete" name="delete"> delete Post</button>
+            </li>
+          <% }) %>
+        </ul>
       </div>
     </div>
 </div>
