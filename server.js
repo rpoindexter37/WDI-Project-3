@@ -14,7 +14,7 @@ const
 	passport = require('passport'),
 	passportConfig = require('./config/passport.js'),
 	userRoutes = require('./routes/users.js'),
-	postRoutes = require('./routes/posts.js'),
+	playlistRoutes = require('./routes/playlists.js'),
 	methodOveride = require('method-override')
 
 	console.log(process.env.boom);
@@ -72,7 +72,7 @@ app.get('/', (req,res) => {
 })
 
 app.use('/', userRoutes)
-app.use('/posts', postRoutes)
+app.use('/playlists', playlistRoutes)
 
 app.listen(port, (err) => {
 	console.log(err || "Server running on port " + port)
