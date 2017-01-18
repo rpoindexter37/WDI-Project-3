@@ -15,7 +15,8 @@ const
 	passportConfig = require('./config/passport.js'),
 	userRoutes = require('./routes/users.js'),
 	playlistRoutes = require('./routes/playlists.js'),
-	methodOveride = require('method-override')
+	methodOveride = require('method-override'),
+	Playlist = require('./models/Playlist.js')
 
 	console.log(process.env.boom);
 
@@ -68,7 +69,9 @@ app.use(ejsLayouts)
 
 //root route
 app.get('/', (req,res) => {
-	res.render('pages/home')
+	Playlist.find({}, (err, playlists) => {
+		res.render('pages/home', {playlists: playlists})
+	})
 })
 
 app.use('/', userRoutes)
