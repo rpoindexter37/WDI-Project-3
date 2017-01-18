@@ -7,8 +7,9 @@ const
 
 userRouter.route('/login')
   .get((req, res) => res.render('login', {message: req.flash('loginMessage')}))
+  // .get((req, res) => res.render('pages/loginModal', {message: req.flash('loginMessage')}))
   .post(passport.authenticate('local-login', {
-    successRedirect: '/profile',
+    successRedirect: '/',
     failureRedirect: '/login'
   }))
 
@@ -18,6 +19,7 @@ userRouter.route('/signup')
     successRedirect: '/profile',
     failureRedirect: '/signup'
   }))
+
 
 userRouter.get('/profile', isLoggedIn, (req, res) => {
   res.render('users/show', {user: req.user})
@@ -40,6 +42,13 @@ userRouter.get('/users/:id', isLoggedIn, (req, res) => {
     if(user) res.render('users/show', {user: user})
   })
 })
+
+userRouter.get('/auth/facebook', passport.authenticate('facebook', {scope: ['email']}))
+
+userRouter.get('/auth/facebook/callback', passport.authenticate('facebook', {
+    successRedirect: '/',
+    failureRedirect: '/login'
+}))
 ///////////////////////////////////////////
 
 function isLoggedIn(req, res, next) {
