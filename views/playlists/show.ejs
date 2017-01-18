@@ -1,11 +1,11 @@
-<h1><%= post.title %></h1>
-<p><%= post.body %></p>
-<h2>By: <%= post._author.local.name %></h2>
-<form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+<h1><%= playlist.name %></h1>
+<p><%= playlist.url %></p>
+<h2>By: <%= playlist._author.local.name %></h2>
+<form action="/playlists/<%= playlist._id %>?_method=DELETE" method="POST">
   <button type="submit">Delete</button>
 </form>
 
-<form class="" action="/posts/<%= post._id %>/comments" method="post">
+<form class="" action="/playlists/<%= playlist._id %>/comments" method="post">
   <textarea class="form-control" name="body" rows="8" placeholder="Add a comment"></textarea>
   <button type="submit" class="btn btn-primary">Submit</button>
 
@@ -13,7 +13,7 @@
 
 
 <ul class="list-group">
-  <% post.comments.forEach((c) =>  { %>
+  <% playlist.comments.forEach((c) =>  { %>
     <li class="list-group-item"><%= c.body %></li>
   <% }) %>
 </ul>

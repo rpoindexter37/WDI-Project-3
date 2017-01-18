@@ -8,11 +8,11 @@ const
       email: String,
       password: String
     },
-    posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}]
+    playlists: [{type: mongoose.Schema.Types.ObjectId, ref: 'Playlist'}]
   })
 
 userSchema.pre('findOne', function() {
-  this.populate('posts')
+  this.populate('playlists')
 })
 
 userSchema.methods.generateHash = function(password) {

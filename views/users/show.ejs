@@ -3,12 +3,12 @@
       <h2><%= user.local.name %></h2>
       <div class="well">
         <ul class="list-group">
-          <% user.posts.forEach((p) =>  { %>
+          <% user.playlists.forEach((p) =>  { %>
             <li class="list-group-item">
               <h3>
-                <a href="/posts/<%= p._id %>"><%= p.title %></a>
+                <a href="/playlists/<%= p._id %>"><%= p.name %></a>
               </h3>
-              <button class"btn btn-danger" type="delete" name="delete"> delete Post</button>
+              <button class"btn btn-danger" type="delete" name="delete"> delete Playlist</button>
             </li>
           <% }) %>
         </ul>
