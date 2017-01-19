@@ -28,7 +28,7 @@
       <ul class="list-group">
         <% playlists.forEach((playlist) => { %>
           <li class="list-group-item">
-            <a href="/playlists/<%= playlist._id %>"><%= playlist.name %></a>
+            <a href="/playlists/<%= playlist._id %>"><%- playlist.url %></a>
           </li>
         <% }) %>
       </ul>
