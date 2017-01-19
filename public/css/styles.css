@@ -107,8 +107,12 @@ video {
     width: 100vw;
 }
 
+nav {
+    z-index: 2;
+}
+
 body {
-    background-color: #A4A9AD;
+    background-color: #D5D7D9;
 }
 
 
