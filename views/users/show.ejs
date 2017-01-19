@@ -1,3 +1,4 @@
+<% include ../partials/newPlaylistModal%>
 
 <div class="row">
     <div class="col-sm-4">
@@ -27,7 +28,7 @@
 			</div>
 
       <div class="">
-        <ul class="lists">
+        <ul id="lists">
 
         </ul>
       </div>
@@ -41,24 +42,82 @@
   $('form').on('submit', function(e) {
     e.preventDefault();
     var playlist = $('input[type=search]').val()
-    $.ajax({
-        url: 'https://api.spotify.com/v1/search',
-        data: {
-            q: playlist,
-            type: 'playlist'
-        },
-        success: function (lists) {
-          // console.log(lists.playlists.items);
-          lists.playlists.items.forEach((list) => {
-            list.uri = list.uri.replace(/:/g , "/").replace('spotify/', '')
 
-            // listLi = `<li>https://open.spotify.com/embed/${list.uri}></li>`
-            listLi = `<li><iframe src="https://open.spotify.com/embed/${list.uri}" width="300" height="380" frameborder="0" allowtransparency="true"></li>`
+    var requestConfig = {
+      url: 'https://api.spotify.com/v1/search',
+      method: 'get',
+      data: {
+        q: playlist,
+        type: 'playlist'
+      }
+    }
 
-            $('.lists').append(listLi)
-            console.log(list);
+    $.ajax(requestConfig).done(function(lists) {
+      console.log(lists.playlists.items);
+      lists.playlists.items.forEach((list) => {
+        list.uri = list.uri.replace(/:/g , "/").replace('spotify/', '')
+
+        // listLi = `<li>https://open.spotify.com/embed/${list.uri}></li>`
+        // listLi = $(`<li class="listLi"><span class="frame"><iframe src="https://open.spotify.com/embed/${list.uri}" width="300" height="280" frameborder="0" allowtransparency="true"></iframe></span><button class="addList">Share this playlists</button></li>`)
+        listLi = $(`<li data-name="${list.name}" class="listLi"><span class="frame"><iframe src="https://open.spotify.com/embed/${list.uri}" width="300" height="280" frameborder="0" allowtransparency="true"></iframe></span><button class="addList">Share this playlists</button></li>`)
+
+        $('#lists').append(listLi)
+
+
+        console.log(lists);
+      })
+      $('.addList').on('click', function() {
+        // console.log( $(this).parent().find('.frame').first().find('iframe').attr('src'));
+        var embedUrl = $(this).parent().find('.frame').html()
+        // console.log(embedbUrl);
+        console.log($(this).parent())
+        var playlistName = $(this).parent().attr('data-name')
+
+        //--test with modal
+        $('#uploadModal').modal('show')
+          $('.newName').val(playlistName)
+          $('.newUrl').val(embedUrl)
+          // var newName = $('.newName').val()
+
+        $('.newList').on('click', function() {
+
+          $('#uploadModal').modal('hide')
+          // $('body').removeClass('modal-open');
+					// $('.modal-backdrop').remove();
+
+          var newPlaylist = {name: $('.newName').val(), url: $('.newUrl').val()}
+          console.log(JSON.stringify(newPlaylist));
+
+          var requestConfig = {
+            url: '/playlists',
+            method: 'POST',
+            data: JSON.stringify(newPlaylist),
+            contentType: 'application/json'
+          }
+
+          $.ajax(requestConfig).done((newPlaylist) => {
+            console.log(newPlaylist);
           })
-        }
-    });
+          window.location.reload();
+
+
+        //end test
+
+        })
+        // var requestConfig = {
+        //   url: '/playlists',
+        //   method: 'POST',
+        //   data: JSON.stringify(newPlaylist),
+        //   contentType: 'application/json'
+        // }
+        // $.ajax(requestConfig).done((newPlaylist) => {
+        //   console.log('hello');
+        // })
+      })
+    })
+
+
   })
+
+
 </script>
