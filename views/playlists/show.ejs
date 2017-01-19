@@ -1,7 +1,8 @@
 <h1><%= playlist.name %></h1>
 <p><%- playlist.url %></p>
-<h2>By: <%= playlist._author.local.name %></h2>
-<!-- <form action="/playlists/<%= playlist._id %>?_method=DELETE" method="POST">
+<h2>By: <%= playlist._author.local.name || playlist._author.facebook.name%></h2>
+<form action="/playlists/<%= playlist._id %>?_method=DELETE" method="POST">
+
   <button type="submit">Delete</button>
 </form> -->
 <br>
