@@ -27,7 +27,7 @@ const
 
 // mongoose connection
 mongoose.connect(mongoConnectionString, (err) => {
-	console.log(err || "Connected to MongoDB (mongoose-relationships-practice)")
+	console.log(err || "Connected to MongoDB (Playlist Monkey)")
 })
 
 // will store session information as a 'sessions' collection in Mongo
