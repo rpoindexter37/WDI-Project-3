@@ -23,12 +23,14 @@
     <% } %>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-      <h1>All playlists:</h1>
+      <h1>What's Hot</h1>
 
       <ul class="list-group">
         <% playlists.forEach((playlist) => { %>
           <li class="list-group-item">
-            <a href="/playlists/<%= playlist._id %>"><%- playlist.url %></a>
+            <h3><%= playlist.name %></h3>
+            <%- playlist.url %>
+            <a href="/playlists/<%= playlist._id %>"><button class="btn btn-primary">Comments</button></a>
           </li>
         <% }) %>
       </ul>
