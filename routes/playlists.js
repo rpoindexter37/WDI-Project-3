@@ -8,6 +8,7 @@ playlistRouter.use(isLoggedIn)
 playlistRouter.route('/')
   .get((req, res) => {
     Playlist.find({}, (err, playlists) => {
+      //req to spotify and get playlists 
       res.render('playlists/index', {playlists: playlists})
     })
   })
