@@ -1,19 +1,21 @@
 <h1><%= playlist.name %></h1>
 <p><%- playlist.url %></p>
 <h2>By: <%= playlist._author.local.name %></h2>
-<form action="/playlists/<%= playlist._id %>?_method=DELETE" method="POST">
+<!-- <form action="/playlists/<%= playlist._id %>?_method=DELETE" method="POST">
   <button type="submit">Delete</button>
-</form>
-
+</form> -->
+<br>
 <form class="" action="/playlists/<%= playlist._id %>/comments" method="post">
   <textarea class="form-control" name="body" rows="2" placeholder="Add a comment"></textarea>
   <button type="submit" class="btn btn-primary">Submit</button>
 
 </form>
-
+<br>
 
 <ul class="list-group">
   <% playlist.comments.forEach((c) =>  { %>
-    <li class="list-group-item"><%= c.body %></li>
+    <li class="list-group-item">
+    	<%= c.body %>
+    </li>
   <% }) %>
 </ul>
