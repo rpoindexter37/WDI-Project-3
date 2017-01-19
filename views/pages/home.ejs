@@ -1,10 +1,16 @@
-<!-- <div class="jumbotron"> -->
-<header class="video-container">
+<div class="video-container">
+  <video preload="true" autoplay="autoplay" loop="loop" volume="0">
+    <source src="../../media/crowd.mp4" type="video/mp4">
+  </video>
+</div>
+
+
 <% include ../partials/loginModal%>
 <% include ../partials/signupModal %>
 <% include ../partials/newPlaylistModal%>
 
 <div class="jumbotron">
+
   <div class="text-center col-md-8 col-md-offset-2">
     <h1 class="text-info">Playlists, WDI Style</h1>
     <h2 class="text-muted">A place to share your favorite Playlist moments.</h2>
@@ -12,28 +18,23 @@
     <% if(loggedIn) { %>
       <a href="#uploadModal" data-toggle="modal" class="btn btn-lg btn-info">Share a Playlist</a>
       <a href="/users" class="btn btn-lg btn-warning">Browse Users</a>
-    <% } else { %>
-      <!-- <a href="/login" class="btn btn-lg btn-info">Login</a> -->
-      <!-- <a href="#loginModal" data-toggle="modal" class="btn btn-lg btn-info">LoginModal</a>
-      <a href="/auth/facebook" class="btn btn-lg btn-info">Login with Facebook</a> -->
-
-      <!-- <a href="/signup" class="btn btn-lg btn-warning">Signup</a> -->
-      <!-- <a href="#signupModal" data-toggle="modal" class="btn btn-lg btn-info">SignupModal</a> -->
-
     <% } %>
-    <div class="row">
       <div class="col-md-8 col-md-offset-2">
-      <h1>All playlists:</h1>
+        <h1>What's Hot</h1>
+      </div>
+    </div>
+  </div>
 
+  <div class="row">
+      <div class="col-md-8 col-md-offset-2">
       <ul class="list-group">
         <% playlists.forEach((playlist) => { %>
           <li class="list-group-item">
-            <a href="/playlists/<%= playlist._id %>"><%- playlist.url %></a>
+            <h3><%= playlist.name %></h3>
+            <%- playlist.url %>
+            <a href="/playlists/<%= playlist._id %>"><button class="btn btn-primary">Comments</button></a>
           </li>
         <% }) %>
       </ul>
       </div>
-      </div>
-  </div>
-</header>
-<!-- </div> -->
+    </div>
