@@ -14,6 +14,7 @@
           <input style="width: 400px; height: 44px;" type="search" value="">
           <!-- <button id="create" type="button" name="button">create</button> -->
           <input type="submit" value="Search" style="display: none;">
+          <button type="submit" id="searchButton" class="btn btn-default">Search</button>
         </form>
 
       </div>
@@ -36,6 +37,7 @@
 </div>
 
 <script type="text/javascript">
+
   $('form').on('submit', function(e) {
     e.preventDefault();
     $('#lists').html('')
