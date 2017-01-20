@@ -92,7 +92,6 @@ button.close {
 }
 
 
-
 /* some simple transitions to make the upvote and downvote
 buttons fade in as a visual cue for the user */
 
@@ -116,4 +115,28 @@ buttons fade in as a visual cue for the user */
 .downVoteButton {
   background-color: white;
   border: none;
+}
+
+.video-container {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 80%;
+    width: 100%;
+    overflow: hidden;
+}
+
+video {
+    position: absolute;
+    z-index: -1;
+    opacity: 0.78;
+    width: 100vw;
+}
+
+nav {
+    z-index: 2;
+}
+
+body {
+    background-color: #D5D7D9;
 }
