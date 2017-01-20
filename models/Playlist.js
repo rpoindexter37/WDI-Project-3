@@ -8,7 +8,8 @@ const
     name: {type: String},
     url: {type: String},
     comments: [commentSchema],
-    _author: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+    _author: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    votes: {type: Number, default: 0}
   }, {timestamps: true})
 
   playlistSchema.pre('findOne', function() {

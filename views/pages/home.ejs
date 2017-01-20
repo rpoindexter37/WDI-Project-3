@@ -1,8 +1,10 @@
+
+
 <!-- <div class="jumbotron"> -->
 <header class="video-container">
-<% include ../partials/loginModal%>
+<% include ../partials/loginModal %>
 <% include ../partials/signupModal %>
-<% include ../partials/newPlaylistModal%>
+<% include ../partials/newPlaylistModal %>
 
 <div class="jumbotron">
   <div class="text-center col-md-8 col-md-offset-2">
@@ -28,7 +30,17 @@
       <ul class="list-group">
         <% playlists.forEach((playlist) => { %>
           <li class="list-group-item">
-            <h3><%= playlist.name %></h3>
+            <h3><%= playlist.name %>
+            <button data-id="<%= playlist._id %>"  class="upVoteButton">
+              <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+            </button>
+
+            <div class="voteCounter"> <%= playlist.votes %> <span></span></div>
+
+            <button data-id="<%= playlist._id %>" class="downVoteButton">
+              <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+            </button>
+            </h3>
             <%- playlist.url %>
             <a href="/playlists/<%= playlist._id %>"><button class="btn btn-primary">Comments</button></a>
           </li>
@@ -39,3 +51,35 @@
   </div>
 </header>
 <!-- </div> -->
+
+<script type="text/javascript">
+
+  $('.upVoteButton').on('click', function () {
+    var playlistID = $(this).attr('data-id')
+    var ajaxOptions = {
+      method: 'PATCH',
+      url: '/playlists/' + playlistID + '/upvote'
+    }
+    $.ajax(ajaxOptions)
+    .done(function (playlist) {
+      $('.voteCounter').html( playlist.votes)
+      // change inner html to playlist.votes of some DOM object
+    })
+  })
+
+  $('.downVoteButton').on('click', function () {
+    var playlistID = $(this).attr('data-id')
+    var ajaxOptions = {
+      method: 'PATCH',
+      url: '/playlists/' + playlistID + '/downvote'
+    }
+    $.ajax(ajaxOptions)
+    .done(function (playlist) {
+      $('.voteCounter').html( playlist.votes)
+    })
+  })
+
+
+
+
+</script>

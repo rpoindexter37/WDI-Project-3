@@ -8,7 +8,7 @@ playlistRouter.use(isLoggedIn)
 playlistRouter.route('/')
   .get((req, res) => {
     Playlist.find({}, (err, playlists) => {
-      //req to spotify and get playlists 
+      //req to spotify and get playlists
       res.render('playlists/index', {playlists: playlists})
     })
   })
@@ -43,6 +43,25 @@ playlistRouter.route('/:id')
     res.redirect('/profile')
   })
 })
+
+playlistRouter.patch('/:id/upvote', (req, res) => {
+  Playlist.findById(req.params.id, (err, playlist) => {
+    playlist.votes ++
+    playlist.save( (err, playlist) => {
+      res.json(playlist)
+    })
+  })
+})
+
+playlistRouter.patch('/:id/downvote', (req, res) => {
+  Playlist.findById(req.params.id, (err, playlist) => {
+    playlist.votes --
+    playlist.save( (err, playlist) => {
+      res.json(playlist)
+    })
+  })
+})
+
 
   playlistRouter.post('/:id/comments', (req, res) => {
     Playlist.findById(req.params.id, (err, playlist) => {
