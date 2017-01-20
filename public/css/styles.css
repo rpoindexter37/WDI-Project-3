@@ -1,7 +1,7 @@
 @import url('https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css');
 
 .navbar-default {
-  background-color: #20A39E;
+  background-color: #49003E;
   border-color: #FFBA49
 }
 
@@ -151,4 +151,12 @@ body {
 
 .downVoteButton {
   float:left
+}
+
+#ShareAPlaylistButton {
+  background-color: #20A39E;
+}
+
+#browseUsersButton {
+  background-color: #FFBA49
 }
