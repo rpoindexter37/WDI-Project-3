@@ -36,7 +36,7 @@
               <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
             </button>
 
-            <div class="voteCounter"> <%= playlist.votes %> <span></span></div>
+            <div data-id="<%= playlist._id %>" class="voteCounter"> <%= playlist.votes %> <span></span></div>
 
             <button data-id="<%= playlist._id %>" class="downVoteButton">
               <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
@@ -65,7 +65,7 @@ $('#loginModal').modal({ show: false})
     }
     $.ajax(ajaxOptions)
     .done(function (playlist) {
-      $('.voteCounter').html( playlist.votes)
+      $('.voteCounter[data-id=' + playlist._id + ']').html( playlist.votes)
     })
   }
       else {
@@ -82,7 +82,7 @@ $('#loginModal').modal({ show: false})
     }
     $.ajax(ajaxOptions)
     .done(function (playlist) {
-      $('.voteCounter').html( playlist.votes)
+      $('.voteCounter[data-id=' + playlist._id + ']').html( playlist.votes)
     })
   }
     else {
