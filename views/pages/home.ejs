@@ -54,7 +54,10 @@
 
 <script type="text/javascript">
 
+$('#loginModal').modal({ show: false})
+
   $('.upVoteButton').on('click', function () {
+  if (<%= loggedIn %> ) {
     var playlistID = $(this).attr('data-id')
     var ajaxOptions = {
       method: 'PATCH',
@@ -63,11 +66,15 @@
     $.ajax(ajaxOptions)
     .done(function (playlist) {
       $('.voteCounter').html( playlist.votes)
-      // change inner html to playlist.votes of some DOM object
     })
+  }
+      else {
+        $('#loginModal').modal('show');
+      }
   })
 
   $('.downVoteButton').on('click', function () {
+  if (<%= loggedIn %> ) {
     var playlistID = $(this).attr('data-id')
     var ajaxOptions = {
       method: 'PATCH',
@@ -77,7 +84,12 @@
     .done(function (playlist) {
       $('.voteCounter').html( playlist.votes)
     })
+  }
+    else {
+      $('#loginModal').modal('show');
+    }
   })
+
 
 
 
