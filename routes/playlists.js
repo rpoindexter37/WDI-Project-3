@@ -24,7 +24,7 @@ playlistRouter.route('/')
 
 
 playlistRouter.get('/new', (req, res) => res.render('playlists/new'))
-playlistRouter.get('/search', (req, res) => res.render('/playlists/search'))
+playlistRouter.get('/search', (req, res) => res.render('playlists/search'))
 
 playlistRouter.route('/:id')
   .get((req, res) => {
