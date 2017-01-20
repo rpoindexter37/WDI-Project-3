@@ -140,3 +140,15 @@ nav {
 body {
     background-color: #D5D7D9;
 }
+
+.playlistNmaeDIsplay {
+  float: left
+}
+
+.upVoteButton {
+  float:left
+}
+
+.downVoteButton {
+  float:left
+}
