@@ -6,23 +6,36 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Share a Playlist</h4>
+        <h2 style="text-align:-webkit-center"class="modal-title" id="myModalLabel">Share a Playlist</h2>
       </div>
 
 <!-- Modal Body -->
       <div class="modal-body">
-            <h1>Share a Playlist</h1>
-            <!-- <form action="/playlists" method="post"> -->
-                <div class="form-group">
-                    <label>Name</label>
-                    <input class="newName" type="text" class="form-control" name="name">
-                </div>
-                <div class="form-group">
-                    <label>Embeded url</label>
-                    <input disabled class="newUrl" type="text" rows="1" class="form-control" name="url"></input>
-                </div>
-                <button class="newList" class="btn btn-info btn-lg">Share a Playlist</button>
-            <!-- </form> -->
+        <div class="row">
+          <div class="col-md-3">
+            Playlist Name
+          </div>
+          <div class="col-md-8">
+            <input class="newName" type="text" class="form-control" name="name">
+          </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+          <div class="col-md-3">
+            Embebed URL
+          </div>
+          <div class="col-md-8">
+            <input class="newUrl" type="text" rows="1" class="form-control" name="url"></input>
+          </div>
+        </div>
+
+        <br>
+
+        <div style="text-align:-webkit-center" class="row">
+          <input class="newList" type="image" style="width:100px;" src="http://images.clipshrine.com/download/wheel/large-Share-Button-0-43341.png" name="saveForm" class="btTxt submit" id="saveForm" />
+        </div>
       </div>
     </div>
   </div>

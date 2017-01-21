@@ -11,9 +11,14 @@
       <h2>Search <img style="width:400px; height:200px;"src="http://www.userlogos.org/files/logos/raulcvc/spotify.png" alt="" /> playlists</h2>
       <div class="form">
         <form action="">
-          <input style="width: 400px; height: 44px;" type="search" value="">
+          <div class="row">
+
+
+            <input style="width: 400px; height: 50px; border-radius: 10px" type="search" value="">
           <!-- <button id="create" type="button" name="button">create</button> -->
-          <input type="submit" value="Search" style="display: none;">
+            <input class="newList" type="image" style="width:120px; height:50px;vertical-align:bottom" src="http://www.pngmart.com/files/3/Search-Button-PNG-File.png" name="saveForm" class="btTxt submit" id="saveForm" />
+          </div>
+          <!-- <input type="submit" value="Search" > -->
         </form>
 
       </div>
@@ -24,6 +29,10 @@
     <div class="col-sm-2">
     </div>
 
+  </div>
+  <div class="row">
+    <br>
+    <br>
   </div>
 
   <div class="row">
@@ -56,8 +65,10 @@
       lists.playlists.items.forEach((list) => {
         list.uri = list.uri.replace(/:/g , "/").replace('spotify/', '')
         // listLi = $(`<li data-name="${list.name}" class="listLi"><span class="frame"><iframe src="https://open.spotify.com/embed/${list.uri}" width="300" height="280" frameborder="0" allowtransparency="true"></iframe></span><button class="addList">Share this playlists</button></li>`)
-        listLi = $(`<div data-name="${list.name}" class="listLi col-sm-4" style="text-align:-webkit-center"><span class="frame"><iframe src="https://open.spotify.com/embed/${list.uri}" width="300" height="280" frameborder="0" allowtransparency="true"></iframe></span><button class="addList">Share this playlists</button></br></div>`)
-
+    //     listLi = $(`<div data-name="${list.name}" class="listLi col-sm-4" style="text-align:-webkit-center"><span class="frame"><iframe src="https://open.spotify.com/embed/${list.uri}" width="300" height="280" frameborder="0" allowtransparency="true"></iframe></span><button style="background: #d5d7d9;
+    // border-radius: 5px;" class="addList">Share This Playlist</button></div>`)
+        listLi = $(`<div data-name="${list.name}" class="listLi col-sm-4" style="text-align:-webkit-center"><span class="frame"><iframe src="https://open.spotify.com/embed/${list.uri}" width="300" height="280" frameborder="0" allowtransparency="true"></iframe></span><input class="addList" type="image" style="width:100px;" src="https://cdn.pixabay.com/photo/2015/04/06/11/08/cloud-709107_640.png" name="saveForm" class="btTxt submit" id="saveForm"/>
+</div>`)
         $('#lists').append(listLi)
 
 

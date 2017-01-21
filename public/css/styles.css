@@ -10,7 +10,9 @@
     background-color: #EF5B5B;
 }
 
-
+.modal-header {
+  background-color: #5bc0de;
+}
 
 .topOptions ul{list-style-type:none;}
 
