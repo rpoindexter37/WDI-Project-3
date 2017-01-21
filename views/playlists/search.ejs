@@ -16,9 +16,12 @@
 
             <input style="width: 400px; height: 50px; border-radius: 10px" type="search" value="">
           <!-- <button id="create" type="button" name="button">create</button> -->
+
             <input class="newList" type="image" style="width:120px; height:50px;vertical-align:bottom" src="http://www.pngmart.com/files/3/Search-Button-PNG-File.png" name="saveForm" class="btTxt submit" id="saveForm" />
           </div>
           <!-- <input type="submit" value="Search" > -->
+          <input type="submit" value="Search" style="display: none;">
+          <button type="submit" id="searchButton" class="btn btn-default">Search</button>
         </form>
 
       </div>
@@ -45,6 +48,7 @@
 </div>
 
 <script type="text/javascript">
+
   $('form').on('submit', function(e) {
     e.preventDefault();
     $('#lists').html('')
