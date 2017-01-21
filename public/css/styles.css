@@ -166,3 +166,7 @@ body {
 #browseUsersButton {
   background-color: #FFBA49
 }
+
+.spacer {
+  padding-top: 25px;
+}
