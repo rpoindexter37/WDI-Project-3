@@ -10,7 +10,9 @@
     background-color: #EF5B5B;
 }
 
-
+.modal-header {
+  background-color: #5bc0de;
+}
 
 .topOptions ul{list-style-type:none;}
 
@@ -152,6 +154,10 @@ body {
 .downVoteButton {
   float:left
 }
+
+.jumbotron {
+   background: rgb(200, 54, 54); /* This is for ie8 and below */
+   background: rgba(200, 54, 54, 0);
 
 #ShareAPlaylistButton {
   background-color: #20A39E;

@@ -27,29 +27,30 @@
   </div>
 
   <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-      <ul class="list-group">
-        <% playlists.forEach((playlist) => { %>
-          <li class="list-group-item">
-            <h3 class="playlistNameDisplay"><%= playlist.name %>
-            <button data-id="<%= playlist._id %>"  class="upVoteButton">
-              <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-            </button>
+    <div class="col-md-10 col-md-offset-1">
+    <ul class="list-group">
+      <% playlists.forEach((playlist) => { %>
+        <li class="list-group-item">
+          <h3 class="playlistNameDisplay"><%= playlist.name %>
+          <button data-id="<%= playlist._id %>"  class="upVoteButton">
+            <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+          </button>
 
-            <div data-id="<%= playlist._id %>" class="voteCounter"> <%= playlist.votes %> <span></span></div>
+          <div data-id="<%= playlist._id %>" class="voteCounter"> <%= playlist.votes %> <span></span></div>
 
-            <button data-id="<%= playlist._id %>" class="downVoteButton">
-              <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-            </button>
-            </h3>
-            <%- playlist.url %>
-            <a href="/playlists/<%= playlist._id %>"><button class="btn btn-primary">Comments</button></a>
-          </li>
-        <% }) %>
-      </ul>
-      </div>
+          <button data-id="<%= playlist._id %>" class="downVoteButton">
+            <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+          </button>
+          </h3>
+          <%- playlist.url %>
+          <a href="/playlists/<%= playlist._id %>"><button class="btn btn-primary">Comments</button></a>
+        </li>
+      <% }) %>
+    </ul>
     </div>
-</header>
+  </div>
+
+
 <!-- </div> -->
 
 <script type="text/javascript">
