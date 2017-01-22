@@ -13,7 +13,7 @@
 <div class="jumbotron">
 
   <div class="text-center col-md-8 col-md-offset-2">
-    <h1 class="text-info">Playlists, WDI Style</h1>
+    <h1 class="text-info class"><strong>Playlists, WDI Style</strong></h1>
     <h2 class="text-muted">A place to share your favorite Playlist moments.</h2>
     <hr>
     <% if(loggedIn) { %>
@@ -24,7 +24,72 @@
         <h1>What's Hot</h1>
       </div>
     </div>
+</div>
+<br>
+<br>
+<br>
+<div class="row" style="text-align:-webkit-center">
+  <h5>Please Login into Your Spotify Account either Desktop App or on the Web before Listening</h5>
+</div>
+<div class="row" style="background-color:white; border-radius: 20px;">
+  <% playlists.forEach((playlist) => { %>
+
+  <div class="col-md-5 col-md-offset-1">
+
+    <div class="row">
+      <h3 class="playlistNameDisplay" style="text-align:-webkit-center"><%= playlist.name %></h3>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <div class="row" style="text-align:-webkit-center; padding-top:40px">
+          <button data-id="<%= playlist._id %>"  class="upVoteButton">
+            <img style="width:50px" src="http://www.clker.com/cliparts/d/5/b/b/11949856281555500779tasto_4_architetto_franc_01.svg.hi.png"/>
+
+            <!-- <span style="position:relative;width:80px; background-color:#d5d7d9"class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> -->
+          </button>
+        </div>
+        <div class="row" style="padding-top:20px; padding-bottom:20px">
+          <div data-id="<%= playlist._id %>" class="voteCounter"><h1> <%= playlist.votes %></h1> <span></span></div>
+
+        </div>
+        <div class="row" style="text-align:-webkit-center; padding-top:20px">
+          <button data-id="<%= playlist._id %>" class="downVoteButton">
+            <!-- <span style="position:relative;width:80px; background-color:#d5d7d9" class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span> -->
+            <img style="width:50px" src="http://i1109.photobucket.com/albums/h437/caltrevethan/for%20my%20project/downarrow.png"/>
+
+          </button>
+        </div>
+
+      </div>
+      <div class="col-md-5" style="text-align:-webkit-center;" >
+        <%- playlist.url %>
+      </div>
+    </div>
+
+    <div class="row" style="text-align:-webkit-center">
+      <div class="row">
+        Comments: <%=playlist.comments.length%>
+
+      </div>
+
+      <div class="row">
+        <a href="/playlists/<%= playlist._id %>"><img style="width:200px; height: 50px;"src="http://www.theadventuresofellabanana.com/wp-content/uploads/2015/10/share-your-thoughts.png"></a>
+      </div>
+
+
+    </div>
+    <hr>
+
   </div>
+<% }) %>
+
+</div>
+
+
+
+
+<!-- </div>
 
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
@@ -48,7 +113,7 @@
       <% }) %>
     </ul>
     </div>
-  </div>
+  </div> -->
 
 
 <!-- </div> -->

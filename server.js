@@ -23,7 +23,9 @@ const
 // environment port
 const
 	port = process.env.PORT || 3000,
-	mongoConnectionString = process.env.MONGODB_URL || 'mongodb://localhost/mongoose-relationships-practice'
+	// mongoConnectionString = 'mongodb://localhost/mongoose-relationships-practice'
+	mongoConnectionString = process.env.MONGODB_UR || 'mongodb://localhost/mongoose-relationships-practice'
+	//rpoindexter:Helios25@ds159328.mlab.com:59328/first-mongo-db -->
 
 // mongoose connection
 mongoose.connect(mongoConnectionString, (err) => {
