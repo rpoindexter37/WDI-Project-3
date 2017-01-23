@@ -21,7 +21,8 @@
       <a href="/users" class="btn btn-lg btn-warning" id="browseUsersButton">Browse Users</a>
     <% } %>
       <div class="col-md-8 col-md-offset-2">
-        <h1>What's Hot</h1>
+      <h3>Please Login into Your Spotify Account on Desktop App or the Web before using.</h3>
+        <!-- <h1>What's Hot</h1> -->
       </div>
     </div>
 </div>
@@ -29,7 +30,7 @@
 <br>
 <br>
 <div class="row" style="text-align:-webkit-center">
-  <h5>Please Login into Your Spotify Account either Desktop App or on the Web before Listening</h5>
+
 </div>
 <div class="row" style="background-color:white; border-radius: 20px;">
   <% playlists.forEach((playlist) => { %>
@@ -44,9 +45,7 @@
       <div class="col-md-2">
         <div class="row" style="text-align:-webkit-center; padding-top:40px">
           <button data-id="<%= playlist._id %>"  class="upVoteButton">
-            <img style="width:50px" src="http://www.clker.com/cliparts/d/5/b/b/11949856281555500779tasto_4_architetto_franc_01.svg.hi.png"/>
-
-            <!-- <span style="position:relative;width:80px; background-color:#d5d7d9"class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> -->
+            <span style="position:relative;width:80px;" class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
           </button>
         </div>
         <div class="row" style="padding-top:20px; padding-bottom:20px">
@@ -54,9 +53,8 @@
 
         </div>
         <div class="row" style="text-align:-webkit-center; padding-top:20px">
-          <button data-id="<%= playlist._id %>" class="downVoteButton">
-            <!-- <span style="position:relative;width:80px; background-color:#d5d7d9" class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span> -->
-            <img style="width:50px" src="http://i1109.photobucket.com/albums/h437/caltrevethan/for%20my%20project/downarrow.png"/>
+          <button data-id="<%= playlist._id %>" class="downVoteButton" width="20px;">
+            <span style="position:relative; width:80px;" class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
 
           </button>
         </div>
@@ -68,13 +66,9 @@
     </div>
 
     <div class="row" style="text-align:-webkit-center">
-      <div class="row">
-        Comments: <%=playlist.comments.length%>
-
-      </div>
 
       <div class="row">
-        <a href="/playlists/<%= playlist._id %>"><img style="width:200px; height: 50px;"src="http://www.theadventuresofellabanana.com/wp-content/uploads/2015/10/share-your-thoughts.png"></a>
+        <a href="/playlists/<%= playlist._id %>"><button class="btn btn-primary"> <%=playlist.comments.length%> Comments</button></a>
       </div>
 
 
@@ -92,6 +86,31 @@
 <!-- </div>
 
   <div class="row">
+<<<<<<< HEAD
+      <div class="col-md-8 col-md-offset-2">
+      <ul class="list-group">
+        <% playlists.forEach((playlist) => { %>
+          <li class="list-group-item">
+            <h3 class="playlistNameDisplay"><%= playlist.name %>
+            </h3>
+            <%- playlist.url %>
+            <a href="/playlists/<%= playlist._id %>"><button class="btn btn-primary">Comments</button></a>
+            <div class="votingBar">
+            <button data-id="<%= playlist._id %>"  class="upVoteButton">
+              <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+            </button>
+
+            <div data-id="<%= playlist._id %>" class="voteCounter"> <%= playlist.votes %> <span></span></div>
+
+            <button data-id="<%= playlist._id %>" class="downVoteButton">
+              <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+            </button>
+            </div>
+          </li>
+        <% }) %>
+      </ul>
+      </div>
+=======
     <div class="col-md-10 col-md-offset-1">
     <ul class="list-group">
       <% playlists.forEach((playlist) => { %>
@@ -112,6 +131,7 @@
         </li>
       <% }) %>
     </ul>
+>>>>>>> de8f0bd174cffcf08f654d48ca4dae7439b88f37
     </div>
   </div> -->
 
